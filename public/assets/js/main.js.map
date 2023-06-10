@@ -1,1 +1,0 @@
-{"version":3,"sources":["main.js"],"names":[],"mappings":"AAAA;AACA","file":"main.js","sourcesContent":["'use strict';\n/*El ejercicio consiste en desarrollar una aplicación web que contiene un listado de personajes de Disney todo el planeta, que nos permite marcar y desmarcar los personajes como favoritos y guardarlos en localStorage.*/"]}
