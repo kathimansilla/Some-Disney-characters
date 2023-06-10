@@ -1,1 +1,19 @@
+.footer {
+    height: 50px;
+    padding: 10px 20px;
+    border-top: 2px solid $border;
+    background-color: $background;
+}
+.footerContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &__text {
+        color: $paragraph;
+        font-size: 0.9rem;
+    }
+    &__icon {
+        margin: 0 3px;
+    }
+}
 
