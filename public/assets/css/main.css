@@ -77,7 +77,8 @@ table {
 
 .main {
   display: flex;
-  padding: 20px 0 0; }
+  padding: 20px 0 0;
+  background-color: #f1f1de; }
 
 .sectionFavorite {
   padding: 0px 20px;
@@ -109,6 +110,20 @@ table {
   display: flex;
   flex-wrap: wrap;
   gap: 20px; }
+
+.card {
+  background-color: white;
+  padding: 20px 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px; }
+
+.nameContainer {
+  display: flex;
+  gap: 5px; }
+
+.hidden {
+  display: none; }
 
 .characterImg {
   height: 150px; }

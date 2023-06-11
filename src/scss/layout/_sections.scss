@@ -1,6 +1,7 @@
 .main {
     display: flex;
     padding: $paddingAndCentralColumn 0 0;
+    background-color: rgb(241, 241, 222);
 }
 .sectionFavorite {
     padding: 0px $paddingAndCentralColumn;
@@ -31,6 +32,20 @@
     flex-wrap: wrap;
     gap: $paddingAndCentralColumn;
     
+}
+.card {
+    background-color: white;
+    padding: $paddingAndCentralColumn $paddingAndCentralColumn 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.nameContainer {
+    display: flex;
+    gap: 5px;
+}
+.hidden {
+    display: none;
 }
 .characterImg {
     height: 150px;
