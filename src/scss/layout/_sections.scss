@@ -1,0 +1,26 @@
+.main {
+    display: flex;
+    padding: $paddingAndCentralColumn 0 0;
+}
+.sectionFavorite {
+    padding: 0px $paddingAndCentralColumn;
+    width: fit-content;
+}
+.sectionMain {
+    padding: 0 $paddingAndCentralColumn;
+    width: fit-content;
+}
+.listFavorite {
+    display: flex;
+    flex-direction: column;
+    gap: $paddingAndCentralColumn;
+}
+.listMain {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $paddingAndCentralColumn;
+    
+}
+.characterImg {
+    height: 150px;
+}

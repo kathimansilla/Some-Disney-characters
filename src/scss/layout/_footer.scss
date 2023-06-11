@@ -1,8 +1,11 @@
 .footer {
-    height: 50px;
-    padding: 10px 20px;
+    height: 20px;
+    padding: 10px $paddingAndCentralColumn;
     border-top: 2px solid $border;
     background-color: $background;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
 }
 .footerContent {
     display: flex;

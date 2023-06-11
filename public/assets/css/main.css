@@ -77,24 +77,39 @@ table {
 
 .main {
   display: flex;
-  padding: 20px 0 0;
-  height: 63vh; }
+  padding: 20px 0 0; }
 
 .sectionFavorite {
-  display: flex;
-  flex-direction: column;
-  padding: 0px 20px; }
+  padding: 0px 20px;
+  width: -moz-fit-content;
+  width: fit-content; }
 
 .sectionMain {
   padding: 0 20px;
+  width: -moz-fit-content;
+  width: fit-content; }
+
+.listFavorite {
   display: flex;
-  flex-direction: row; }
+  flex-direction: column;
+  gap: 20px; }
+
+.listMain {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; }
+
+.characterImg {
+  height: 150px; }
 
 .footer {
-  height: 50px;
+  height: 20px;
   padding: 10px 20px;
   border-top: 2px solid #e26161;
-  background-color: #eeee7f; }
+  background-color: #eeee7f;
+  position: fixed;
+  bottom: 0;
+  width: 100vw; }
 
 .footerContent {
   display: flex;
