@@ -1,52 +1,64 @@
+//refactorizar scss with &
 .main {
-    display: flex;
-    padding: $paddingAndCentralColumn 0 0;
-    background-color: rgb(241, 241, 222);
+  display: flex;
+  padding: $paddingAndCentralColumn 0 60px;
+  background-color: rgb(246, 238, 236);
 }
 .sectionFavorite {
-    padding: 0px $paddingAndCentralColumn;
-    width: fit-content;
+  padding: 0px $paddingAndCentralColumn;
+  width: fit-content;
 }
 .sectionMain {
-    padding: 0 $paddingAndCentralColumn;
-    width: fit-content;
+  padding: 0 $paddingAndCentralColumn;
+  width: fit-content;
 }
 .sectionTitle {
-    text-align: center;
-    padding: $paddingAndCentralColumn 0;
-    font-weight: bold;
-    padding-right: 5px;
+  text-align: center;
+  padding: $paddingAndCentralColumn 0;
+  font-weight: bold;
+  padding-right: 5px;
 }
 .favoriteTitleContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .listFavorite {
-    display: flex;
-    flex-direction: column;
-    gap: $paddingAndCentralColumn;
+  display: flex;
+  flex-direction: column;
+  gap: $paddingAndCentralColumn;
 }
 .listMain {
-    display: flex;
-    flex-wrap: wrap;
-    gap: $paddingAndCentralColumn;
-    
+  display: flex;
+  flex-wrap: wrap;
+  gap: $paddingAndCentralColumn;
 }
 .card {
-    background-color: white;
-    padding: $paddingAndCentralColumn $paddingAndCentralColumn 10px;
+  background-color: white;
+  padding: $paddingAndCentralColumn $paddingAndCentralColumn 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 150px;
+  &__imgContainer {
+    height: 150px;
     display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-.nameContainer {
+    justify-content: center;
+    overflow: hidden;
+    & .characterImg {
+      height: 150px;
+    }
+  }
+  &__nameContainer {
     display: flex;
     gap: 5px;
+    & .hidden {
+      display: none;
+    }
+  }
 }
+
+//eliminar
 .hidden {
     display: none;
-}
-.characterImg {
-    height: 150px;
-}
+  }

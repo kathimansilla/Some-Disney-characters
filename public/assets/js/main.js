@@ -4,10 +4,11 @@
 //const  = document.querySelector('.');
 const ulMainElement = document.querySelector('.js__listMain');
 
-// VARIABLES GLOBALES
+// VARIABLES GLOBALES, OBJETOS Y ARRAYS VACÍOS
+/*urlAPI = 'api.disneyapi.dev/character?pageSize=50'
+urlAPIDeLasProfes = //dev.adalab.es/api/disney?pageSize=15*/
 const urlAPI = 'https://api.disneyapi.dev/character?pageSize=50';
-// urlAPI = 'api.disneyapi.dev/character?pageSize=50'
-//urlAPIDeLasProfes = //dev.adalab.es/api/disney?pageSize=15
+let cardListApi = [];
 
 // FETCH
 /*fetch()
@@ -18,19 +19,22 @@ fetch(urlAPI)
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
-    ulMainElement.innerHTML = renderOneCard(data.data[0]);
+    cardListApi = data.data;
+    renderCardList(cardListApi);
   });
 
 // FUNCIONES
 const renderOneCard = (card) => {
   const htmlCard = 
   `<li class="card">
-    <img
-      src="${card.imageUrl}"
-      alt="${card.name}"
-      class="characterImg"
-    />
-    <div class="nameContainer">
+    <div class="card__imgContainer">
+        <img
+            src="${card.imageUrl}"
+            alt="${card.name}"
+            class="characterImg"
+        />
+    </div>
+    <div class="card__nameContainer">
       <i class="fa-solid fa-heart hidden"></i>
       <i class="fa-solid fa-heart-crack hidden"></i>
       <i class="fa-regular fa-heart"></i>
@@ -38,6 +42,12 @@ const renderOneCard = (card) => {
     </div>
   </li>`;
   return htmlCard;
+};
+
+const renderCardList = (dataList) => {
+    for (const card of dataList) {
+        ulMainElement.innerHTML += renderOneCard(card);
+    };
 };
 // EVENTOS
 
