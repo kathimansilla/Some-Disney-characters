@@ -10,6 +10,17 @@
     padding: 0 $paddingAndCentralColumn;
     width: fit-content;
 }
+.sectionTitle {
+    text-align: center;
+    padding: $paddingAndCentralColumn 0;
+    font-weight: bold;
+    padding-right: 5px;
+}
+.favoriteTitleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .listFavorite {
     display: flex;
     flex-direction: column;

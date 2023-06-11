@@ -51,7 +51,7 @@ table {
 
 .header {
   height: 25vh;
-  background-image: url("../images/RD-mickey-mouse-GettyImages-1137134597-JVcrop.jpeg");
+  background-image: url("../images/mickey.jpeg");
   background-size: contain;
   display: flex;
   justify-content: space-between;
@@ -88,6 +88,17 @@ table {
   padding: 0 20px;
   width: -moz-fit-content;
   width: fit-content; }
+
+.sectionTitle {
+  text-align: center;
+  padding: 20px 0;
+  font-weight: bold;
+  padding-right: 5px; }
+
+.favoriteTitleContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 .listFavorite {
   display: flex;
