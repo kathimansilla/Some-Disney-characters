@@ -9,9 +9,9 @@ const ulMainElement = document.querySelector('.js__listMain');
 /*urlAPI = 'api.disneyapi.dev/character?pageSize=50'
 urlAPIDeLasProfes = //dev.adalab.es/api/disney?pageSize=15*/
 const urlAPI = 'https://api.disneyapi.dev/character?pageSize=50';
+const imgEmpty = 'https://via.placeholder.com/210x295/ffffff/555555/?text=Disney';
 let cardListApi = [];
-const imgEmpty =
-  'https://via.placeholder.com/210x295/ffffff/555555/?text=Disney';
+let cardListFavorites = [];
 
 // ---> SECCIÓN FETCH
 /*fetch()
@@ -64,7 +64,15 @@ const addEventCard = () => {
 };
 
 const handleClickCard = (event) => {
-  const clickedCardId = event.currentTarget.id;
+  const clickedCardId = parseInt(event.currentTarget.id);
+  const selectedCardHTML = cardListApi.find((card) => card._id === clickedCardId);
+  const selectedCardIndex = cardListFavorites.findIndex((card) => card._id === clickedCardId);
+  if (selectedCardIndex === -1) {
+    cardListFavorites.push(selectedCardHTML);
+  }
+  else {
+    cardListFavorites.splice(selectedCardIndex, 1);
+  }
 };
 
 // ---> EVENTOS
