@@ -9,6 +9,8 @@ const ulMainElement = document.querySelector('.js__listMain');
 urlAPIDeLasProfes = //dev.adalab.es/api/disney?pageSize=15*/
 const urlAPI = 'https://api.disneyapi.dev/character?pageSize=50';
 let cardListApi = [];
+const imgEmpty =
+  'https://via.placeholder.com/210x295/ffffff/555555/?text=Disney';
 
 // FETCH
 /*fetch()
@@ -25,8 +27,10 @@ fetch(urlAPI)
 
 // FUNCIONES
 const renderOneCard = (card) => {
-  const htmlCard = 
-  `<li class="card">
+  if (card.imageUrl === '' || card.imageUrl === undefined) {
+    card.imageUrl = 'imgEmpty';
+  };
+  const htmlCard = `<li class="card">
     <div class="card__imgContainer">
         <img
             src="${card.imageUrl}"
@@ -45,8 +49,8 @@ const renderOneCard = (card) => {
 };
 
 const renderCardList = (dataList) => {
-    for (const card of dataList) {
-        ulMainElement.innerHTML += renderOneCard(card);
-    };
+  for (const card of dataList) {
+    ulMainElement.innerHTML += renderOneCard(card);
+  }
 };
 // EVENTOS
