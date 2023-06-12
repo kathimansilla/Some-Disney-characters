@@ -22,4 +22,3 @@ This project has been supervised by:
 - **Yanelis Serrano** @ytaylordev
 
 © Adalab 2023 | Trótula Promotion
-![image](https://github.com/Adalab/modulo-2-evaluacion-final-kathimansilla/assets/128271613/9ca2ba23-1110-4f84-8b85-489b8caa70b4)
