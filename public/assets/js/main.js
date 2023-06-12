@@ -1,10 +1,11 @@
 'use strict';
 /*El ejercicio consiste en desarrollar una aplicación web que contiene un listado de personajes de Disney todo el planeta, que nos permite marcar y desmarcar los personajes como favoritos y guardarlos en localStorage.*/
-// QUERYSELECTOR
+
+// ---> SECCIÓN QUERYSELECTOR
 //const  = document.querySelector('.');
 const ulMainElement = document.querySelector('.js__listMain');
 
-// VARIABLES GLOBALES, OBJETOS Y ARRAYS VACÍOS
+// ---> SECCIÓN VARIABLES GLOBALES, OBJETOS Y ARRAYS VACÍOS
 /*urlAPI = 'api.disneyapi.dev/character?pageSize=50'
 urlAPIDeLasProfes = //dev.adalab.es/api/disney?pageSize=15*/
 const urlAPI = 'https://api.disneyapi.dev/character?pageSize=50';
@@ -12,7 +13,7 @@ let cardListApi = [];
 const imgEmpty =
   'https://via.placeholder.com/210x295/ffffff/555555/?text=Disney';
 
-// FETCH
+// ---> SECCIÓN FETCH
 /*fetch()
 .then()
 .then()*/
@@ -25,7 +26,7 @@ fetch(urlAPI)
     renderCardList(cardListApi);
   });
 
-// FUNCIONES
+// ---> SECCIÓN FUNCIONES
 const renderOneCard = (card) => {
   if (card.imageUrl === '' || card.imageUrl === undefined) {
     card.imageUrl = 'imgEmpty';
@@ -53,6 +54,7 @@ const renderCardList = (dataList) => {
     ulMainElement.innerHTML += renderOneCard(card);
   }
 };
-// EVENTOS
+
+// ---> EVENTOS
 
 //# sourceMappingURL=main.js.map
