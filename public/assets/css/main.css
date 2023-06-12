@@ -117,7 +117,8 @@ table {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  width: 150px; }
+  width: 150px;
+  cursor: pointer; }
   .card__imgContainer {
     height: 150px;
     display: flex;

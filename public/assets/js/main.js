@@ -30,8 +30,8 @@ fetch(urlAPI)
 const renderOneCard = (card) => {
   if (card.imageUrl === '' || card.imageUrl === undefined) {
     card.imageUrl = 'imgEmpty';
-  };
-  const htmlCard = `<li class="card">
+  }
+  const htmlCard = `<li class="card js__cardElement" id="${card._id}">
     <div class="card__imgContainer">
         <img
             src="${card.imageUrl}"
@@ -52,7 +52,19 @@ const renderOneCard = (card) => {
 const renderCardList = (dataList) => {
   for (const card of dataList) {
     ulMainElement.innerHTML += renderOneCard(card);
-  }
+  };
+  addEventCard();
+};
+
+const addEventCard = () => {
+  const cardElement = document.querySelectorAll('.js__cardElement');
+  for (const card of cardElement) {
+    card.addEventListener('click', handleClickCard);
+  };
+};
+
+const handleClickCard = (event) => {
+  const clickedCardId = event.currentTarget.id;
 };
 
 // ---> EVENTOS
