@@ -70,6 +70,7 @@ const handleClickCard = (event) => {
     heartBackgroundDelete(clickedCardId);
     cardListFavorites.splice(selectedCardIndex, 1);
   }
+  localStorage.setItem("favoriteCard", JSON.stringify(cardListFavorites));
   renderFavoriteList();
   renderCardList(cardListApi);
 };
@@ -100,6 +101,7 @@ const heartBackgroundDelete = (idCard) => {
 };
 
 // ---> EVENTOS
+
 const addEventCard = () => {
   const cardElement = document.querySelectorAll('.js__cardElement');
   for (const card of cardElement) {
@@ -107,4 +109,14 @@ const addEventCard = () => {
   };
 };
 
+// ---> LOCAL STORAGE DATA
+
+const cardFavoritesLS = localStorage.getItem('favoriteCard');
+const init = () => {
+  if (cardFavoritesLS) {
+    cardListFavorites = JSON.parse(cardFavoritesLS);
+    renderFavoriteList(cardListFavorites);
+  };
+};
+init();
 //# sourceMappingURL=main.js.map
