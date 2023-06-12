@@ -4,7 +4,8 @@
 - **Kathi Mansilla** @kathimansilla
 
 
-In the final examen of the second module we have to make a js page to show Disney characters with their names and images from a API. This site is under construction, currently, you can selected and save your favorites characters. 
+In the final exam of the second module we have to program the js of a Disney characters's page and show them with their names and images. The data is extracted from an API. 
+This site is under construction, currently, you can select and save your favorite characters in local storage. 
 
 ## Tools: ⚒️
 
