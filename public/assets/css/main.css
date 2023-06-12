@@ -120,6 +120,8 @@ table {
   gap: 5px;
   width: 150px;
   cursor: pointer; }
+  .card__favorite {
+    background-color: #da7c7c; }
   .card__imgContainer {
     height: 150px;
     display: flex;

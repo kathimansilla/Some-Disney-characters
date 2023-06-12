@@ -1,24 +1,25 @@
 'use strict';
-/*El ejercicio consiste en desarrollar una aplicación web que contiene un listado de personajes de Disney todo el planeta, que nos permite marcar y desmarcar los personajes como favoritos y guardarlos en localStorage.*/
 
 // ---> SECCIÓN QUERYSELECTOR
-//const  = document.querySelector('.');
 const ulMainElement = document.querySelector('.js__listMain');
 let ulFavoritesElement = document.querySelector('.js__listFavorite');
 
-// ---> SECCIÓN VARIABLES GLOBALES, OBJETOS Y ARRAYS VACÍOS
-/*urlAPI = 'api.disneyapi.dev/character?pageSize=50'
-urlAPIDeLasProfes = //dev.adalab.es/api/disney?pageSize=15*/
-const urlAPI = 'https://api.disneyapi.dev/character?pageSize=50';
+// ---> ELEMENTOS CREADOS EN EL DOM
+  const newIconHeartCrack = document.createElement('i');
+  newIconHeartCrack.classList.add('fa-solid');
+  newIconHeartCrack.classList.add('fa-heart-crack');
+
+// ---> SECCIÓN VARIABLES GLOBALES
+//const urlAPI = 'https://api.disneyapi.dev/character?pageSize=50';
+const urlAPI = 'https://dev.adalab.es/api/disney?pageSize=15';
 const imgEmpty = 'https://via.placeholder.com/210x295/ffffff/555555/?text=Disney';
+let favorite = false;
+
+// ---> SECCIÓN OBJETOS Y ARRAYS VACÍOS
 let cardListApi = [];
 let cardListFavorites = [];
 
 // ---> SECCIÓN FETCH
-/*fetch()
-.then()
-.then()*/
-
 fetch(urlAPI)
   .then((response) => response.json())
   .then((data) => {
@@ -31,7 +32,7 @@ fetch(urlAPI)
 const renderOneCard = (card) => {
   if (card.imageUrl === '' || card.imageUrl === undefined) {
     card.imageUrl = 'imgEmpty';
-  }
+  };
   const htmlCard = `<li class="card js__cardElement" id="${card._id}">
     <div class="card__imgContainer">
         <img
@@ -40,49 +41,68 @@ const renderOneCard = (card) => {
             class="characterImg"
         />
     </div>
-    <div class="card__nameContainer">
-      <i class="fa-solid fa-heart hidden"></i>
-      <i class="fa-solid fa-heart-crack hidden"></i>
-      <i class="fa-regular fa-heart"></i>
-      <p>${card.name}</p>
+    <div class="card__nameContainer js__nameContainer">
+      <p class="js__name">${card.name}</p>
+      <i class="fa-solid fa-heart js__heartIcon"></i>
     </div>
   </li>`;
   return htmlCard;
 };
 
 const renderCardList = (dataList) => {
+  ulMainElement.innerHTML = '';
   for (const card of dataList) {
-    ulMainElement.innerHTML += renderOneCard(card);
+    ulMainElement.innerHTML += renderOneCard(card);  
   };
   addEventCard();
 };
 
+const handleClickCard = (event) => {
+  const clickedCardId = parseInt(event.currentTarget.id);
+  const selectedCard = cardListApi.find((card) => card._id === clickedCardId);
+  const selectedCardIndex = cardListFavorites.findIndex((card) => card._id === clickedCardId);
+  
+  if (selectedCardIndex === -1) {
+    heartBackgroundAdd(clickedCardId, true);
+    cardListFavorites.push(selectedCard);
+  }
+  else {
+    heartBackgroundDelete(clickedCardId);
+    cardListFavorites.splice(selectedCardIndex, 1);
+  }
+  renderFavoriteList();
+  renderCardList(cardListApi);
+};
+
+const renderFavoriteList = () => {
+  ulFavoritesElement.innerHTML = '';
+  for (const favoriteCard of cardListFavorites) {
+    ulFavoritesElement.innerHTML += renderOneCard(favoriteCard);
+    const idCard = favoriteCard._id;
+    heartBackgroundAdd(idCard, true);
+  }
+}
+
+const heartBackgroundAdd = (idCard) => {
+  const favoriteCard = document.getElementById(idCard);
+  const nameContainer = favoriteCard.querySelector('.js__nameContainer');
+  const iconHeart = nameContainer.querySelector('.js__heartIcon');
+  const name = nameContainer.querySelector('.js__name');
+  newIconHeartCrack.style.color = 'white'; 
+  favoriteCard.style.backgroundColor = '#000000';
+  name.style.color = 'white';
+  nameContainer.appendChild(newIconHeartCrack);
+  nameContainer.removeChild(iconHeart);
+};
+
+const heartBackgroundDelete = (idCard) => {
+  renderCardList(cardListApi);
+};
+
+// ---> EVENTOS
 const addEventCard = () => {
   const cardElement = document.querySelectorAll('.js__cardElement');
   for (const card of cardElement) {
     card.addEventListener('click', handleClickCard);
   };
 };
-
-const handleClickCard = (event) => {
-  const clickedCardId = parseInt(event.currentTarget.id);
-  const selectedCardHTML = cardListApi.find((card) => card._id === clickedCardId);
-  const selectedCardIndex = cardListFavorites.findIndex((card) => card._id === clickedCardId);
-  if (selectedCardIndex === -1) {
-    cardListFavorites.push(selectedCardHTML);
-  }
-  else {
-    cardListFavorites.splice(selectedCardIndex, 1);
-  }
-  renderFavoriteList();
-  console.log(renderFavoriteList);
-};
-
-let renderFavoriteList = () => {
-  ulFavoritesElement.innerHTML = '';
-  for (const favoriteCard of cardListFavorites) {
-    ulFavoritesElement.innerHTML += renderOneCard(favoriteCard);
-  }
-};
-
-// ---> EVENTOS

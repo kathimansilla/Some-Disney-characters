@@ -42,6 +42,9 @@
   gap: 5px;
   width: 150px;
   cursor: pointer;
+  &__favorite {
+    background-color: rgb(218, 124, 124);
+  }
   &__imgContainer {
     height: 150px;
     display: flex;
