@@ -4,6 +4,7 @@
 // ---> SECCIÓN QUERYSELECTOR
 //const  = document.querySelector('.');
 const ulMainElement = document.querySelector('.js__listMain');
+let ulFavoritesElement = document.querySelector('.js__listFavorite');
 
 // ---> SECCIÓN VARIABLES GLOBALES, OBJETOS Y ARRAYS VACÍOS
 /*urlAPI = 'api.disneyapi.dev/character?pageSize=50'
@@ -72,6 +73,15 @@ const handleClickCard = (event) => {
   }
   else {
     cardListFavorites.splice(selectedCardIndex, 1);
+  }
+  renderFavoriteList();
+  console.log(renderFavoriteList);
+};
+
+let renderFavoriteList = () => {
+  ulFavoritesElement.innerHTML = '';
+  for (const favoriteCard of cardListFavorites) {
+    ulFavoritesElement.innerHTML += renderOneCard(favoriteCard);
   }
 };
 
