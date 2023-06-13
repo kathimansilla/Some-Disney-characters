@@ -3,6 +3,8 @@
 // ---> SECCIÓN QUERYSELECTOR
 const ulMainElement = document.querySelector('.js__listMain');
 let ulFavoritesElement = document.querySelector('.js__listFavorite');
+const inputElement = document.querySelector('.js__inputElement');
+const searchBntElement = document.querySelector('.js__searchBnt');
 
 // ---> ELEMENTOS CREADOS EN EL DOM
   const newIconHeartCrack = document.createElement('i');
@@ -100,6 +102,12 @@ const heartBackgroundDelete = (idCard) => {
   renderCardList(cardListApi);
 };
 
+const handleClickSearch = (event) => {
+  event.preventDefault();
+  const inputValue = inputElement.value;
+  const filterList = cardListApi.filter((card) => card.name.toLowerCase().includes(inputValue.toLowerCase()));
+  renderCardList(filterList);
+};
 // ---> EVENTOS
 
 const addEventCard = () => {
@@ -108,6 +116,8 @@ const addEventCard = () => {
     card.addEventListener('click', handleClickCard);
   };
 };
+
+searchBntElement.addEventListener('click', handleClickSearch);
 
 // ---> LOCAL STORAGE DATA
 
