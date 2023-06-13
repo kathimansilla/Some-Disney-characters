@@ -131,6 +131,7 @@ table {
       height: 150px; }
   .card__nameContainer {
     display: flex;
+    justify-content: space-between;
     gap: 5px; }
     .card__nameContainer .white {
       color: white; }
