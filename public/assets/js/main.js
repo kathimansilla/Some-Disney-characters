@@ -11,6 +11,14 @@ const searchBntElement = document.querySelector('.js__searchBnt');
   newIconHeartCrack.classList.add('fa-solid');
   newIconHeartCrack.classList.add('fa-heart-crack');
 
+  const resetFavBtn = document.createElement('button');
+  const resetFavBtnContent = document.createTextNode('Borrar favoritos');
+  resetFavBtn.appendChild(resetFavBtnContent);
+  resetFavBtn.classList.add('resetFavBtn');
+  resetFavBtn.classList.add('js__resetFavBtn');
+  console.log(resetFavBtn);
+
+
 // ---> SECCIÓN VARIABLES GLOBALES
 //const urlAPI = 'https://api.disneyapi.dev/character?pageSize=50';
 const urlAPI = 'https://dev.adalab.es/api/disney?pageSize=15';
@@ -118,7 +126,14 @@ const renderFavoriteList = () => {
     const idCard = favoriteCard._id;
     heartBackgroundAdd(idCard);
   }
-}
+  if (ulFavoritesElement.innerHTML === '') {
+    resetFavBtn.classList.add('hidden');
+  }
+  else {
+    resetFavBtn.classList.remove('hidden');
+    ulFavoritesElement.appendChild(resetFavBtn);
+  };
+};
 
 const heartBackgroundAdd = (idCard) => {
   const favoriteCard = document.getElementById(idCard);
@@ -148,6 +163,13 @@ const handleKeyupEmptySearch = (event) => {
     renderCardList(cardListApi);
   };
 };
+
+const handelClickResetFav = (event) => {
+  cardListFavorites = [];
+  renderFavoriteList();
+  renderCardList(cardListApi);
+  localStorage.setItem("favoriteCard", JSON.stringify(cardListFavorites));
+};
 // ---> EVENTOS
 
 const addEventCard = () => {
@@ -159,6 +181,7 @@ const addEventCard = () => {
 
 searchBntElement.addEventListener('click', handleClickSearch);
 inputElement.addEventListener('keyup', handleKeyupEmptySearch);
+resetFavBtn.addEventListener('click', handelClickResetFav);
 
 // ---> LOCAL STORAGE DATA
 

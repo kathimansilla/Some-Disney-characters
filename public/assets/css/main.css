@@ -135,8 +135,13 @@ table {
     gap: 5px; }
     .card__nameContainer .white {
       color: white; }
-    .card__nameContainer .hidden {
-      display: none; }
+
+.hidden {
+  display: none; }
+
+.resetFavBtn {
+  border-color: #e26161;
+  background-color: #eeee7f; }
 
 .footer {
   height: 20px;
