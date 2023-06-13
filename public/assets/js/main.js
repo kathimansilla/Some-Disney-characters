@@ -14,6 +14,7 @@ const searchBntElement = document.querySelector('.js__searchBnt');
   const resetFavBtn = document.createElement('button');
   const resetFavBtnContent = document.createTextNode('Borrar favoritos');
   resetFavBtn.appendChild(resetFavBtnContent);
+  resetFavBtn.classList.add('resetFavBtn');
   resetFavBtn.classList.add('js__resetFavBtn');
   console.log(resetFavBtn);
 
