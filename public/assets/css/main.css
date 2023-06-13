@@ -121,7 +121,7 @@ table {
   width: 150px;
   cursor: pointer; }
   .card__favorite {
-    background-color: #da7c7c; }
+    background-color: #000000; }
   .card__imgContainer {
     height: 150px;
     display: flex;
@@ -131,12 +131,12 @@ table {
       height: 150px; }
   .card__nameContainer {
     display: flex;
+    justify-content: space-between;
     gap: 5px; }
+    .card__nameContainer .white {
+      color: white; }
     .card__nameContainer .hidden {
       display: none; }
-
-.hidden {
-  display: none; }
 
 .footer {
   height: 20px;
