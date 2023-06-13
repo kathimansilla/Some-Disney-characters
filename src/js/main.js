@@ -125,9 +125,13 @@ const renderFavoriteList = () => {
     const idCard = favoriteCard._id;
     heartBackgroundAdd(idCard);
   }
-  if (cardListFavorites) {
-    ulFavoritesElement.appendChild(resetFavBtn);
+  if (ulFavoritesElement.innerHTML === '') {
+    resetFavBtn.classList.add('hidden');
   }
+  else {
+    resetFavBtn.classList.remove('hidden');
+    ulFavoritesElement.appendChild(resetFavBtn);
+  };
 };
 
 const heartBackgroundAdd = (idCard) => {
