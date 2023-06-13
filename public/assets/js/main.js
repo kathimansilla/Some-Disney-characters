@@ -15,6 +15,9 @@ const searchBntElement = document.querySelector('.js__searchBnt');
 //const urlAPI = 'https://api.disneyapi.dev/character?pageSize=50';
 const urlAPI = 'https://dev.adalab.es/api/disney?pageSize=15';
 const imgEmpty = 'https://via.placeholder.com/210x295/ffffff/555555/?text=Disney';
+let isFavorite = '';
+let backGroundFav = '';
+let colorFav = '';
 
 // ---> SECCIÓN OBJETOS Y ARRAYS VACÍOS
 let cardListApi = [];
@@ -31,23 +34,11 @@ fetch(urlAPI)
 
 // ---> SECCIÓN FUNCIONES
 const renderOneCard = (card) => {
-  if (card.imageUrl === '' || card.imageUrl === undefined) {
-    card.imageUrl = 'imgEmpty';
-  };
-  
-  let isFavorite = cardListFavorites.find((favCard) => favCard._id === card._id);
-  let colorFav = '';
+  fillEmptyImgURL(card);
+  getFavoriteBackground(card);
+  getFavoriteColor(card);
 
-  if (isFavorite) {
-    isFavorite = 'card__favorite';
-    colorFav = 'white';
-  }
-  else {
-    isFavorite = '';
-    colorFav = '';
-  };
-
-  const htmlCard = `<li class="card ${isFavorite} js__cardElement" id="${card._id}">
+  const htmlCard = `<li class="card ${backGroundFav} js__cardElement" id="${card._id}">
     <div class="card__imgContainer">
         <img
             src="${card.imageUrl}"
@@ -61,6 +52,38 @@ const renderOneCard = (card) => {
     </div>
   </li>`;
   return htmlCard;
+};
+
+const fillEmptyImgURL = (card) => {
+  if (card.imageUrl === '' || card.imageUrl === undefined) {
+    card.imageUrl = 'imgEmpty';
+  };
+};
+
+const getFavoriteBackground = (card) => {
+  isFavorite = cardListFavorites.find((favCard) => favCard._id === card._id);
+  backGroundFav = isFavorite;
+
+  if (isFavorite) {
+    backGroundFav = 'card__favorite';
+  }
+  else {
+    backGroundFav = '';
+  };
+  return backGroundFav;
+};
+
+const getFavoriteColor = (card) => {
+  isFavorite = cardListFavorites.find((favCard) => favCard._id === card._id);
+  colorFav = isFavorite;
+
+  if (isFavorite) {
+    colorFav = 'white';
+  }
+  else {
+    colorFav = '';
+  };
+  return colorFav;
 };
 
 const renderCardList = (dataList) => {
@@ -99,7 +122,6 @@ const renderFavoriteList = () => {
 
 const heartBackgroundAdd = (idCard) => {
   const favoriteCard = document.getElementById(idCard);
-  console.log(idCard);
   const nameContainer = favoriteCard.querySelector('.js__nameContainer');
   const iconHeart = nameContainer.querySelector('.js__heartIcon');
   const name = nameContainer.querySelector('.js__name');
