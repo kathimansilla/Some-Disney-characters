@@ -55,7 +55,7 @@ const renderOneCard = (card) => {
 };
 
 const fillEmptyImgURL = (card) => {
-  if (card.imageUrl === '' || card.imageUrl === undefined) {
+  if (card.imageUrl === '' || card.imageUrl === undefined || card.imageUrl === null) {
     card.imageUrl = 'imgEmpty';
   };
 };
