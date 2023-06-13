@@ -43,7 +43,7 @@
   width: 150px;
   cursor: pointer;
   &__favorite {
-    background-color: rgb(218, 124, 124);
+    background-color: #000000;
   }
   &__imgContainer {
     height: 150px;
@@ -57,13 +57,11 @@
   &__nameContainer {
     display: flex;
     gap: 5px;
+    & .white {
+      color: white;
+    }
     & .hidden {
       display: none;
     }
   }
 }
-
-//eliminar
-.hidden {
-    display: none;
-  }

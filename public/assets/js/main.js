@@ -15,7 +15,6 @@ const searchBntElement = document.querySelector('.js__searchBnt');
 //const urlAPI = 'https://api.disneyapi.dev/character?pageSize=50';
 const urlAPI = 'https://dev.adalab.es/api/disney?pageSize=15';
 const imgEmpty = 'https://via.placeholder.com/210x295/ffffff/555555/?text=Disney';
-let favorite = false;
 
 // ---> SECCIÓN OBJETOS Y ARRAYS VACÍOS
 let cardListApi = [];
@@ -35,7 +34,20 @@ const renderOneCard = (card) => {
   if (card.imageUrl === '' || card.imageUrl === undefined) {
     card.imageUrl = 'imgEmpty';
   };
-  const htmlCard = `<li class="card js__cardElement" id="${card._id}">
+  
+  let isFavorite = cardListFavorites.find((favCard) => favCard._id === card._id);
+  let colorFav = '';
+
+  if (isFavorite) {
+    isFavorite = 'card__favorite';
+    colorFav = 'white';
+  }
+  else {
+    isFavorite = '';
+    colorFav = '';
+  };
+
+  const htmlCard = `<li class="card ${isFavorite} js__cardElement" id="${card._id}">
     <div class="card__imgContainer">
         <img
             src="${card.imageUrl}"
@@ -44,8 +56,8 @@ const renderOneCard = (card) => {
         />
     </div>
     <div class="card__nameContainer js__nameContainer">
-      <p class="js__name">${card.name}</p>
-      <i class="fa-solid fa-heart js__heartIcon"></i>
+      <p class="${colorFav} js__name">${card.name}</p>
+      <i class="fa-solid fa-heart ${colorFav} js__heartIcon"></i>
     </div>
   </li>`;
   return htmlCard;
@@ -65,7 +77,6 @@ const handleClickCard = (event) => {
   const selectedCardIndex = cardListFavorites.findIndex((card) => card._id === clickedCardId);
   
   if (selectedCardIndex === -1) {
-    heartBackgroundAdd(clickedCardId, true);
     cardListFavorites.push(selectedCard);
   }
   else {
@@ -82,12 +93,13 @@ const renderFavoriteList = () => {
   for (const favoriteCard of cardListFavorites) {
     ulFavoritesElement.innerHTML += renderOneCard(favoriteCard);
     const idCard = favoriteCard._id;
-    heartBackgroundAdd(idCard, true);
+    heartBackgroundAdd(idCard);
   }
 }
 
 const heartBackgroundAdd = (idCard) => {
   const favoriteCard = document.getElementById(idCard);
+  console.log(idCard);
   const nameContainer = favoriteCard.querySelector('.js__nameContainer');
   const iconHeart = nameContainer.querySelector('.js__heartIcon');
   const name = nameContainer.querySelector('.js__name');
