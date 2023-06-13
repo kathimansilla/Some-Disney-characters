@@ -142,6 +142,12 @@ const handleClickSearch = (event) => {
   const filterList = cardListApi.filter((card) => card.name.toLowerCase().includes(inputValue.toLowerCase()));
   renderCardList(filterList);
 };
+
+const handleKeyupEmptySearch = (event) => {
+  if (inputElement.value === '') {
+    renderCardList(cardListApi);
+  };
+};
 // ---> EVENTOS
 
 const addEventCard = () => {
@@ -152,6 +158,7 @@ const addEventCard = () => {
 };
 
 searchBntElement.addEventListener('click', handleClickSearch);
+inputElement.addEventListener('keyup', handleKeyupEmptySearch);
 
 // ---> LOCAL STORAGE DATA
 
