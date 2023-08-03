@@ -1,4 +1,4 @@
-# FINAL EXAM MODULE 2: JS
+# FINAL EXAM MODULE 2: JavaScript
 
 ## Student: 👩🏻‍💻
 - **Kathi Mansilla** @kathimansilla
