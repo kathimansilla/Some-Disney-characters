@@ -5,7 +5,8 @@ This site is under construction, currently, you can select and save your favorit
 
 ## Tools: ⚒️
 
-- `HTML, CSS, JS`
+- `JS`
+- `HTML, SCSS`
 - `Vs Code`
 - `GitHub`
 - `Adalab Web Starter Kit`
